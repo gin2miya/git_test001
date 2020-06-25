@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}PV世界マップ{% endblock title %}
+
+{% block content %}
+
+    <h1>PVポテンシャル_20200508版サンプル</h1>
+
+	<div id="world-map" style="float:left;">
+		<iframe src="test1_PV_heatmap.html" width="500" height="500"></iframe>
+	</div>
+
+
+<!-- コメント
+
+	{% include "test2_PV_heatmap.html" %}
+-->
+	<div id="100-box" style="float:left;">
+	
+		<div id="bunnrui" style="clear:both;">
+			ポテンシャル(kWh/kWp)
+		</div>
+	
+		<div id="red-box">
+			<img src="media/images/red.png">
+			～1300
+		</div>
+		
+		<div id="orange-box">
+			<img src="media/images/orange.png">
+			1300～1150
+		</div>
+
+		<div id="yellow-box">
+			<img src="media/images/yellow.png">
+			1150～1000
+		</div>
+		
+		<div id="green-box">
+			<img src="media/images/green.png">
+			1000～850
+		</div>
+		
+		<div id="ygreen-box">
+			<img src="media/images/ygreen.png">
+			850～700
+		</div>
+		
+		<div id="blue-box">
+			<img src="media/images/blue.png">
+			700～550
+		</div>
+
+		<div id="gray-box">
+			<img src="media/images/gray.png">
+			550～
+		</div>
+		
+	</div>
+
+	<div style="clear:both;">
+    	<p>備考</p>
+        <p>色分け7種類</p>
+        <p>PV_heatmap.htmlを埋め込み</p>
+    </div>
+    
+    <form method="post" action="calc">
+
+        {% csrf_token %}
+
+        <input type="number" name="val1">
+
+        <button type="submit"> = </button>
+
+        {{ answer }}
+
+    </form>
+
+{% endblock %}
